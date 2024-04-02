@@ -10,6 +10,7 @@ import pages.Header;
 import pages.LoginPage;
 import pages.account.DepositPage;
 import pages.account.TransactionsPage;
+import utility.Constant;
 
 import java.time.Duration;
 
@@ -19,7 +20,7 @@ public class CustomerTest {
     @BeforeTest
     public void setup() {
         driver = new ChromeDriver();
-        driver.get("https://www.globalsqa.com/angularJs-protractor/BankingProject/#/login");
+        driver.get(Constant.URL);
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(2));
     }
 
