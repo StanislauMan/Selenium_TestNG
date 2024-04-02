@@ -43,8 +43,16 @@ public class CustomerTest {
     public void testCustomerDeposit() {
         testCustomerLogin();
         AccountPage accountPage = new AccountPage(driver);
+        String accountBalance = accountPage.getBalanceAmount();
         DepositPage depositPage = accountPage.clickDepositBtn();
         Assert.assertEquals(depositPage.getDepositFieldTitle(), "Amount to be Deposited :");
+        String deposit = "1000";
+        depositPage.typeDepositAmount(deposit);
+        depositPage.clickDepositBtn();
+        Assert.assertEquals(depositPage.getDepositSuccessMessage(), "Deposit Successful");
+        Integer expectedBalance = Integer.parseInt(accountBalance) + Integer.parseInt(deposit);
+        Assert.assertEquals(accountPage.getBalanceAmount(), Integer.toString(expectedBalance));
+
     }
 
     @AfterTest
