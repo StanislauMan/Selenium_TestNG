@@ -24,4 +24,8 @@ public class TransactionsPage {
         return new AccountPage(driver);
     }
 
+    public void clickResetBtn() {
+        driver.findElement(resetBtn).click();
+    }
+
 }

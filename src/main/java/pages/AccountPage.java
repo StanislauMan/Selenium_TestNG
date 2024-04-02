@@ -2,6 +2,7 @@ package pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.Select;
 import pages.account.DepositPage;
 import pages.account.TransactionsPage;
 import pages.account.WithdrawlPage;
@@ -52,5 +53,10 @@ public class AccountPage {
 
     public String getCurrencyType() {
         return driver.findElement(currencyType).getText();
+    }
+
+    public void selectAccountNumber(String number) {
+        Select select = new Select(driver.findElement(this.accountList));
+        select.selectByVisibleText(number);
     }
 }

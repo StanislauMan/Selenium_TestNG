@@ -6,11 +6,13 @@ import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 import pages.AccountPage;
 import pages.CustomerLoginPage;
+import pages.Header;
 import pages.LoginPage;
+import pages.account.DepositPage;
 
 import java.time.Duration;
 
-public class CustomerLoginTest {
+public class CustomerTest {
     WebDriver driver;
 
     @BeforeTest
@@ -28,6 +30,21 @@ public class CustomerLoginTest {
         customerLoginPage.selectCustomerUser("Hermoine Granger");
         AccountPage accountPage = customerLoginPage.clickLoginBtn();
         Assert.assertEquals(accountPage.getAccountWelcomeTitle(), "Hermoine Granger");
+    }
+
+    @Test
+    public void testClickHomeButton() {
+        Header header = new Header(driver);
+        LoginPage loginPage = header.clickHomeBtn();
+        Assert.assertEquals(driver.getCurrentUrl(), "https://www.globalsqa.com/angularJs-protractor/BankingProject/#/login");
+    }
+
+    @Test
+    public void testCustomerDeposit() {
+        testCustomerLogin();
+        AccountPage accountPage = new AccountPage(driver);
+        DepositPage depositPage = accountPage.clickDepositBtn();
+        Assert.assertEquals(depositPage.getDepositFieldTitle(), "Amount to be Deposited :");
     }
 
     @AfterTest

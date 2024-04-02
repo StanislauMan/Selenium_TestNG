@@ -14,4 +14,20 @@ public class DepositPage {
     public DepositPage(WebDriver driver) {
         this.driver = driver;
     }
+
+    public String getDepositFieldTitle() {
+        return driver.findElement(depositFieldTitle).getText();
+    }
+
+    public void typeDepositAmount(String amount) {
+        driver.findElement(depositAmountField).sendKeys(amount);
+    }
+
+    public void clickDepositBtn() {
+        driver.findElement(depositBtn).click();
+    }
+
+    public String getDepositSuccessMessage() {
+        return driver.findElement(depositSuccessMessage).getText();
+    }
 }
