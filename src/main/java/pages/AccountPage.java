@@ -47,8 +47,9 @@ public class AccountPage {
         return driver.findElement(accountNumber).getText();
     }
 
-    public String getBalanceAmount() {
-        return driver.findElement(balanceAmount).getText();
+    public int getBalanceAmount() {
+        String balance = driver.findElement(balanceAmount).getText();
+        return Integer.parseInt(balance);
     }
 
     public String getCurrencyType() {

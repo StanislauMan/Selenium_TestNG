@@ -9,6 +9,7 @@ import pages.CustomerLoginPage;
 import pages.Header;
 import pages.LoginPage;
 import pages.account.DepositPage;
+import pages.account.TransactionsPage;
 
 import java.time.Duration;
 
@@ -41,17 +42,50 @@ public class CustomerTest {
 
     @Test
     public void testCustomerDeposit() {
+        String deposit = "1000";
+
         testCustomerLogin();
         AccountPage accountPage = new AccountPage(driver);
-        String accountBalance = accountPage.getBalanceAmount();
+        int accountBalance = accountPage.getBalanceAmount();
         DepositPage depositPage = accountPage.clickDepositBtn();
         Assert.assertEquals(depositPage.getDepositFieldTitle(), "Amount to be Deposited :");
-        String deposit = "1000";
         depositPage.typeDepositAmount(deposit);
         depositPage.clickDepositBtn();
         Assert.assertEquals(depositPage.getDepositSuccessMessage(), "Deposit Successful");
-        Integer expectedBalance = Integer.parseInt(accountBalance) + Integer.parseInt(deposit);
+        int expectedBalance = accountBalance + Integer.parseInt(deposit);
         Assert.assertEquals(accountPage.getBalanceAmount(), Integer.toString(expectedBalance));
+
+    }
+
+    @Test
+    public void testResetTransactionData() {
+        testCustomerLogin();
+        AccountPage accountPage = new AccountPage(driver);
+        int accountBalance = accountPage.getBalanceAmount();
+        TransactionsPage transactionsPage = accountPage.clickTransactionsBtn();
+        transactionsPage.clickResetBtn();
+        transactionsPage.clickBackBtn();
+    }
+
+    @Test
+    public void testCheckDepositTransaction() throws InterruptedException {
+        testResetTransactionData();
+        String deposit = "1000";
+
+        AccountPage accountPage = new AccountPage(driver);
+        int accountBalance = accountPage.getBalanceAmount();
+        DepositPage depositPage = accountPage.clickDepositBtn();
+        Assert.assertEquals(depositPage.getDepositFieldTitle(), "Amount to be Deposited :");
+        depositPage.typeDepositAmount(deposit);
+        depositPage.clickDepositBtn();
+        Assert.assertEquals(depositPage.getDepositSuccessMessage(), "Deposit Successful");
+        int expectedBalance = accountBalance + Integer.parseInt(deposit);
+        Assert.assertEquals(accountPage.getBalanceAmount(), expectedBalance);
+
+        Thread.sleep(1000);
+        TransactionsPage transactionsPage = accountPage.clickTransactionsBtn();
+        Assert.assertEquals(transactionsPage.getTransactionAmount(), deposit);
+        Assert.assertEquals(transactionsPage.getTransactionType(), "Credit");
 
     }
 

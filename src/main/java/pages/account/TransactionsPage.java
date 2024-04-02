@@ -9,6 +9,8 @@ public class TransactionsPage {
 
     private By backBtn = By.cssSelector("button[ng-click='back()']");
     private By resetBtn = By.cssSelector("button[ng-click='reset()']");
+    private By transactionAmount = By.cssSelector("table tbody tr td:nth-child(2)");
+    private By transactionType = By.cssSelector("table tbody tr td:nth-child(3)");
     private By startDatePicker = By.cssSelector("input[id='start']");
     private By endDatePicker = By.cssSelector("input[id='end']");
     private By scrollRightBtn = By.cssSelector("button[ng-click='scrollRight()']");
@@ -26,6 +28,14 @@ public class TransactionsPage {
 
     public void clickResetBtn() {
         driver.findElement(resetBtn).click();
+    }
+
+    public String getTransactionAmount() {
+        return driver.findElement(transactionAmount).getText();
+    }
+
+    public String getTransactionType() {
+        return driver.findElement(transactionType).getText();
     }
 
 }
