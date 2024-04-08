@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
-<suite name="Suite">
-    <test name="Test">
+<suite name="UI e2e test suite">
+    <listeners>
+        <listener class-name="common.Listeners" />
+    </listeners>
+    <test name="UI testing">
         <classes>
-            <class name="CustomerTest"/>
+            <class name="ui.CustomerTest"/>
         </classes>
     </test>
 </suite>

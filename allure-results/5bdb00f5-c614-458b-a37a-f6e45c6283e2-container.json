@@ -1,0 +1,1 @@
+{"uuid":"5bdb00f5-c614-458b-a37a-f6e45c6283e2","name":"common.BaseTest.closer","children":["905bc4aa-624f-453b-8eec-a1c2a0dbe201"],"description":"","befores":[],"afters":[{"name":"closer","status":"passed","stage":"finished","description":"","steps":[],"attachments":[],"parameters":[],"start":1712575611858,"stop":1712575612095}],"start":1712575611858,"stop":1712575612095}
