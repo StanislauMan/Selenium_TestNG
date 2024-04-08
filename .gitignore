@@ -5,6 +5,7 @@ target/
 
 src/test/java/ui/MainTest.java
 screenshot
+allure-results
 
 ### IntelliJ IDEA ###
 .idea/
