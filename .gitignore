@@ -4,6 +4,7 @@ target/
 !**/src/test/**/target/
 
 src/test/java/ui/MainTest.java
+screenshot
 
 ### IntelliJ IDEA ###
 .idea/
