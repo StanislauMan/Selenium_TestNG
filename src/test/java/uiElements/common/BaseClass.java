@@ -1,28 +1,26 @@
-package common;
+package uiElements.common;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.testng.annotations.*;
+import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeTest;
 
 import java.io.FileInputStream;
 import java.io.IOException;
-import java.time.Duration;
 import java.util.Properties;
 
-public class BaseTest {
+public class BaseClass {
     public static WebDriver driver;
     public static Properties properties;
 
-    @BeforeMethod
+    @BeforeTest
     public void setup() throws IOException {
         properties = new Properties();
-        properties.load(new FileInputStream("src/test/resources/prorerties/local.properties"));
+        properties.load(new FileInputStream("src/test/resources/prorerties/local.uiElements.properties"));
         driver = new ChromeDriver();
-        driver.get(properties.getProperty("base_url"));
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(2));
     }
 
-    @AfterMethod
+    @AfterTest
     public void closer() {
         driver.quit();
     }
