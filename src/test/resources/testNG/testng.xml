@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="UI e2e test suite">
+    <listeners>
+        <listener class-name="BankManagerApp.common.Listeners" />
+    </listeners>
+    <test name="UI testing">
+        <classes>
+            <class name="BankManagerApp.tests.CustomerTest"/>
+        </classes>
+    </test>
+</suite>
