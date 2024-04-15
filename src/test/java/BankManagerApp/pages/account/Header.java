@@ -1,4 +1,4 @@
-package pages;
+package BankManagerApp.pages.account;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;

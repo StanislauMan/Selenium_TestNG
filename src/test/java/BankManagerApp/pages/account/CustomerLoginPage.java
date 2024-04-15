@@ -1,8 +1,7 @@
-package pages;
+package BankManagerApp.pages.account;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 
 public class CustomerLoginPage {
@@ -20,9 +19,14 @@ public class CustomerLoginPage {
         return driver.findElement(userListLabel).getText();
     }
 
-    public void selectCustomerUser(String username) {
+    public CustomerLoginPage selectCustomerUser(String username) {
         Select select = new Select(driver.findElement(this.userDropDownList));
         select.selectByVisibleText(username);
+        return this;
+    }
+
+    public boolean isLoginBtnEnabled() {
+        return driver.findElement(loginBtn).isEnabled();
     }
 
     public AccountPage clickLoginBtn() {
